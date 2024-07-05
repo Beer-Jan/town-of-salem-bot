@@ -1,10 +1,13 @@
-import discord
 import os
-intents1 = discord.Intents.default()
-intents1.members = True
+
+import discord
 from dotenv import load_dotenv
 from discord.ext import commands
+from discord import Message
 from discord.ext.commands import Context
+
+intents1 = discord.Intents.default()
+intents1.members = True
 
 client = commands.Bot(command_prefix = '-', intents = intents1)
 
@@ -38,7 +41,7 @@ async def on_ready():
     print('Get ready to TOS')
 
 @client.event
-async def on_message(message: str):
+async def on_message(message: Message):
     if message.channel == jailor and alive in message.author.roles:
         await jailee.send(f'**Jailor**: {message.content}')
     elif message.channel == jailee and alive in message.author.roles:
